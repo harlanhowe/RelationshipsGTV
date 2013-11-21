@@ -29,7 +29,7 @@ public class UserInterface {
     
     }
     
-    public ArayList<String>options(int selectedOption)
+    public ArrayList<String>options(int selectedOption)
     {
         if(title)
         
