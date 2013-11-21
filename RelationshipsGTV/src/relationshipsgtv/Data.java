@@ -25,8 +25,10 @@ public class Data
         relationshipTypesID = 1;
     }
     
-    
+    // --------
     // Adding things to the maps
+    // --------
+    
     public void addToPeople(Person newPerson)
     {
         people.put(peopleID, newPerson);
