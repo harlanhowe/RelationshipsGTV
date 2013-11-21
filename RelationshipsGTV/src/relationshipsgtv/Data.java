@@ -49,6 +49,13 @@ public class Data
      */
     public void addRelationship(Person firstPerson, RelationshipType relationshipTypeToAdd, Person secondPerson)
     {
+        int relTypeID = relationshipTypeToAdd.getID();
+        int secondID = secondPerson.getID();
         
+        ArrayList relAndPerson2 = new ArrayList<Integer>();
+        relAndPerson2.add(relTypeID);
+        relAndPerson2.add(secondID);
+        
+        relationships.put(firstPerson, relAndPerson2);
     }
 }
