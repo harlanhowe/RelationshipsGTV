@@ -42,12 +42,12 @@ public class Data
     }
     
     /**
-     * 
+     * This adds a new relationship to the relationships HashMap.
      * @param personToAdd X has a brother Y, with this person being X. This will be the key in the relationships HashMap.
      * @param relationshipTypeID This is the ID of the desired relationshipType. To get this, call the relationshipType's getID() function.
      * @param secondPerson X has a brother Y, with this person being Y.
      */
-    public void addRelationship(Person personToAdd, int relationshipTypeID, int secondPerson)
+    public void addRelationship(Person firstPerson, RelationshipType relationshipTypeToAdd, Person secondPerson)
     {
         
     }
