@@ -25,8 +25,10 @@ public class Data
         relationshipTypesID = 1;
     }
     
-    
+    // --------
     // Adding things to the maps
+    // --------
+    
     public void addToPeople(Person newPerson)
     {
         people.put(peopleID, newPerson);
@@ -37,8 +39,25 @@ public class Data
     public void addToRelationshipTypes(RelationshipType newRelationshipType)
     {
         relationshipTypes.put(relationshipTypesID, newRelationshipType);
+        newRelationshipType.setID(relationshipTypesID);
         relationshipTypesID ++;
     }
     
-    
+    /**
+     * This adds a new relationship to the relationships HashMap.
+     * @param firstPerson X has a brother Y, with this person being X. This will be the key in the relationships HashMap.
+     * @param relationshipTypeToAdd This is the desired relationshipType.
+     * @param secondPerson X has a brother Y, with this person being Y.
+     */
+    public void addRelationship(Person firstPerson, RelationshipType relationshipTypeToAdd, Person secondPerson)
+    {
+        int relTypeID = relationshipTypeToAdd.getID();
+        int secondID = secondPerson.getID();
+        
+        ArrayList relAndPerson2 = new ArrayList<Integer>();
+        relAndPerson2.add(relTypeID);
+        relAndPerson2.add(secondID);
+        
+        relationships.put(firstPerson, relAndPerson2);
+    }
 }

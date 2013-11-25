@@ -14,11 +14,10 @@ public class RelationshipsGTV {
      
      * @param args the command line arguments
      */
-    UserInterface UI=new UserInterface();
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         // TODO code application logic here
+        //thing    
     
-        
-        
     }
 }
