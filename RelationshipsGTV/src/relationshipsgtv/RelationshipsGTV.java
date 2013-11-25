@@ -7,6 +7,8 @@ package relationshipsgtv;
 import relationshipsgtv.UserInterface;
 import relationshipsgtv.Data;
 import relationshipsgtv.RelationshipType;
+import relationshipsgtv.Person;
+
 
 /**
  *
@@ -29,12 +31,12 @@ public class RelationshipsGTV {
         //thing    
         int a=UI.displayMenuAndGetResponse("Menu", options, "Pick an action", true);
         String prompt=UI.choosePrompt(a);
-        String[]option;
+        String[]option = new String[myData.people.size()];
         for(int i=0;i<myData.people.size();i++)
-                {
+           {
+                  option[i]=((Person)(myData.people.get(i))).getName();
                     
-                    
-                }
-        UI.displayStringChoiceAndGetResponse(prompt, args)
+           }
+        UI.displayStringChoiceAndGetResponse(prompt,option);
     }
 }
