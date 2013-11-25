@@ -48,6 +48,7 @@ public class Data
     
     /**
      * This adds a new relationship to the relationships HashMap.
+     * If there is already an entry in the relationships HashMap with the firstPerson key, then it will add the relationship to the existing ArrayList object for that key.
      * @param firstPerson X has a brother Y, with this person being X. This will be the key in the relationships HashMap.
      * @param relationshipTypeToAdd This is the desired relationshipType.
      * @param secondPerson X has a brother Y, with this person being Y.
