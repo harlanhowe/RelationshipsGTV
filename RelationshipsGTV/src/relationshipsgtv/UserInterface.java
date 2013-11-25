@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class UserInterface {
 
    // static ArrayList<String>temp=new ArrayList<String>();
-    //  temp.add("Add Person"+"Add Relationship"+"Add Relationship Type"+"Remove Relationship"+"Display Relationsips");  
+    //  temp.add("Add Person" "Remove Person" "Remove Relationship Type" +"Add Relationship"+"Add Relationship Type"+"Remove Relationship"+"Display Relationsips");  
              
    
     /*public ArrayList<String>choices()
@@ -126,8 +126,26 @@ public class UserInterface {
         return null;
         
     }
-
-
+ //  temp.add("Add Person" "Remove Person" "Remove Relationship Type" +"Add Relationship"+"Add Relationship Type"+"Remove Relationship"+"Display Relationsips");  
+    public String choosePrompt(int a)
+    {
+        if(a==0)
+            return "Type the name of the person to add";
+        if(a==1)
+            return "Type the name of the person to remove";
+        if(a==2)
+            return "Type the name of the Relationship Type to add";
+        if(a==3)
+            return "Type the name of the Relationship Type to remove";
+        if(a==4)
+            return "Create a new relationship";
+        if(a==5)
+            return "Delete a new relationship";
+        //if(a==6)
+            //display relationships
+         return null;
+        
+    }
     
 
 }
