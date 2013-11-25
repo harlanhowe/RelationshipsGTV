@@ -10,13 +10,14 @@ package relationshipsgtv;
  */
 public class RelationshipType 
 {
-    private String primaryVersion, inverseVersion;
+    private String primaryVersion, inverseVersion, neutralVersion;
     private int iD;
     
-    public RelationshipType(String newPrimaryVersion, String newInverseVersion)
+    public RelationshipType(String newPrimaryVersion, String newNeutralVersion, String newInverseVersion)
     {
         primaryVersion = newPrimaryVersion;
         inverseVersion = newInverseVersion;
+        neutralVersion = newNeutralVersion;
     }
     
     public String getPrimaryVersion()
@@ -26,6 +27,10 @@ public class RelationshipType
     public String getInverseVersion()
     {
         return inverseVersion;
+    }
+    public String getNeutralVersion()
+    {
+        return neutralVersion;
     }
     
     public void setID(int newID)
