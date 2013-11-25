@@ -13,7 +13,7 @@ import java.util.HashMap;
  */
 public class Data 
 {
-    private HashMap people, relationshipTypes, relationships;
+    public HashMap people, relationshipTypes, relationships;
     private int peopleID, relationshipTypesID;
     
     public Data()
@@ -79,15 +79,15 @@ public class Data
     // Returning data from maps
     // ---------------
     
-    public Person getPerson(int givenPersonID)
-    {
-        Person desiredPerson = (Person)(people.get(givenPersonID));
-        return desiredPerson;
-    }
-    
-    public RelationshipType getRelationshipType(int givenRelationshipTypeID)
-    {
-        RelationshipType desiredRelationshipType = (RelationshipType)(relationshipTypes.get(givenRelationshipTypeID));
-        return desiredRelationshipType;
-    }
+//    public Person getPerson(int givenPersonID)
+//    {
+//        Person desiredPerson = (Person)(people.get(givenPersonID));
+//        return desiredPerson;
+//    }
+//    
+//    public RelationshipType getRelationshipType(int givenRelationshipTypeID)
+//    {
+//        RelationshipType desiredRelationshipType = (RelationshipType)(relationshipTypes.get(givenRelationshipTypeID));
+//        return desiredRelationshipType;
+//    }
 }
