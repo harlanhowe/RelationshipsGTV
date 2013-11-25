@@ -25,6 +25,9 @@ public class Data
         relationshipTypesID = 1;
     }
     
+    
+    
+    
     // --------
     // Adding things to the maps
     // --------
@@ -67,5 +70,24 @@ public class Data
             relAndPerson2.add(secondID);
             relationships.put(firstPerson, relAndPerson2);
         }
+    }
+    
+    
+    
+    
+    // ---------------
+    // Returning data from maps
+    // ---------------
+    
+    public Person getPerson(int givenPersonID)
+    {
+        Person desiredPerson = (Person)(people.get(givenPersonID));
+        return desiredPerson;
+    }
+    
+    public RelationshipType getRelationshipType(int givenRelationshipTypeID)
+    {
+        RelationshipType desiredRelationshipType = (RelationshipType)(relationshipTypes.get(givenRelationshipTypeID));
+        return desiredRelationshipType;
     }
 }
