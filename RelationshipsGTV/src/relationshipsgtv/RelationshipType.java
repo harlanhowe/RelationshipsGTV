@@ -16,22 +16,23 @@ public class RelationshipType
     public RelationshipType(String newPrimaryVersion, String newNeutralVersion, String newInverseVersion)
     {
         primaryVersion = newPrimaryVersion;
-        inverseVersion = newInverseVersion;
         neutralVersion = newNeutralVersion;
+        inverseVersion = newInverseVersion;
     }
     
     public String getPrimaryVersion()
     {
         return primaryVersion;
     }
-    public String getInverseVersion()
-    {
-        return inverseVersion;
-    }
     public String getNeutralVersion()
     {
         return neutralVersion;
     }
+    public String getInverseVersion()
+    {
+        return inverseVersion;
+    }
+    
     
     public void setID(int newID)
     {
