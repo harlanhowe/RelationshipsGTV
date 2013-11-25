@@ -54,10 +54,18 @@ public class Data
         int relTypeID = relationshipTypeToAdd.getID();
         int secondID = secondPerson.getID();
         
-        ArrayList relAndPerson2 = new ArrayList<Integer>();
-        relAndPerson2.add(relTypeID);
-        relAndPerson2.add(secondID);
-        
-        relationships.put(firstPerson, relAndPerson2);
+        if (relationships.containsKey(firstPerson))
+        {
+            ArrayList existingList = (ArrayList)(relationships.get(firstPerson));
+            existingList.add(relTypeID);
+            existingList.add(secondPerson);
+        }
+        else
+        {
+            ArrayList relAndPerson2 = new ArrayList<Integer>();
+            relAndPerson2.add(relTypeID);
+            relAndPerson2.add(secondID);
+            relationships.put(firstPerson, relAndPerson2);
+        }
     }
 }
