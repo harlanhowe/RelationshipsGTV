@@ -13,7 +13,7 @@ import java.util.HashMap;
  */
 public class Data 
 {
-    private HashMap people, relationshipTypes, relationships;
+    public HashMap people, relationshipTypes, relationships;
     private int peopleID, relationshipTypesID;
     
     public Data()
@@ -24,6 +24,9 @@ public class Data
         peopleID = 1;
         relationshipTypesID = 1;
     }
+    
+    
+    
     
     // --------
     // Adding things to the maps
@@ -54,10 +57,37 @@ public class Data
         int relTypeID = relationshipTypeToAdd.getID();
         int secondID = secondPerson.getID();
         
-        ArrayList relAndPerson2 = new ArrayList<Integer>();
-        relAndPerson2.add(relTypeID);
-        relAndPerson2.add(secondID);
-        
-        relationships.put(firstPerson, relAndPerson2);
+        if (relationships.containsKey(firstPerson))
+        {
+            ArrayList existingList = (ArrayList)(relationships.get(firstPerson));
+            existingList.add(relTypeID);
+            existingList.add(secondPerson);
+        }
+        else
+        {
+            ArrayList relAndPerson2 = new ArrayList<Integer>();
+            relAndPerson2.add(relTypeID);
+            relAndPerson2.add(secondID);
+            relationships.put(firstPerson, relAndPerson2);
+        }
     }
+    
+    
+    
+    
+    // ---------------
+    // Returning data from maps
+    // ---------------
+    
+//    public Person getPerson(int givenPersonID)
+//    {
+//        Person desiredPerson = (Person)(people.get(givenPersonID));
+//        return desiredPerson;
+//    }
+//    
+//    public RelationshipType getRelationshipType(int givenRelationshipTypeID)
+//    {
+//        RelationshipType desiredRelationshipType = (RelationshipType)(relationshipTypes.get(givenRelationshipTypeID));
+//        return desiredRelationshipType;
+//    }
 }

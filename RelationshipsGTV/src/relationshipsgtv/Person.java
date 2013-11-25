@@ -14,10 +14,10 @@ public class Person
     private boolean male;
     private int iD;
     
-    public Person(String newName, boolean newMale)
+    public Person(String newName, boolean isMale)
     {
         name = newName;
-        male = newMale;
+        male = isMale;
     }
     
     public String getName()
