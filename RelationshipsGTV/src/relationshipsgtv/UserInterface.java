@@ -13,31 +13,29 @@ import java.util.Scanner;
  */
 public class UserInterface {
 
+   // static ArrayList<String>temp=new ArrayList<String>();
+    //  temp.add("Add Person"+"Add Relationship"+"Add Relationship Type"+"Remove Relationship"+"Display Relationsips");  
+             
    
-    public String title(int selection)
+    /*public ArrayList<String>choices()
+      {
+          ArrayList<String>temp=new ArrayList<String>();
+         temp.add("Add Person"+"Add Relationship"+"Add Relationship Type"+"Remove Relationship"+"Display Relationsips");  
+               return temp; 
+      }
+    
+    public String prompt(int a)
     {
-         Scanner input =new Scanner(System.in);
-         int option =input.nextI
-       
-            
-      if()
-        {
-            
-            
-        }
-        return "Main Menu";
+        Scanner input =new Scanner(System.in);
+        a=input.nextInt();
     
     }
-    
-    public ArrayList<String>options(int selectedOption)
-    {
-        if(title)
-        
-        
-    }
-    
+    */
     public static final int CANCEL_OPTION = -1;
 
+    
+    
+    
     /**
      * Displays a text-based menu and gets the user's response; returns the number
      * of the option chosen by the user, or -1 if the user cancels. The user will
@@ -77,8 +75,10 @@ public class UserInterface {
                     return CANCEL_OPTION;
                 if (selection<1 || selection>options.size())
                     System.out.println("That number is out of range. Please try again.");
-                else
+                else{
                     goodAnswer=true;
+                    return selection;
+                }
             }
             catch (NumberFormatException nfe)
             {
