@@ -82,13 +82,13 @@ public class Data
     // Returning data from maps
     // ---------------
     
-    public ArrayList<Person> getPeople(int givenPersonID)
+    public ArrayList<String> getPeopleNames()
     {
         return null;
         
     }
     
-    public RelationshipType getRelationshipTypes(int givenRelationshipTypeID)
+    public ArrayList<String> getNeutralRelationshipTypes()
     {
         return null;
     }
