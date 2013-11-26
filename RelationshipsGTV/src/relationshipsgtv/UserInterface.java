@@ -13,25 +13,10 @@ import java.util.Scanner;
  */
 public class UserInterface {
 
-   // static ArrayList<String>temp=new ArrayList<String>();
-    //  temp.add("Add Person" "Remove Person" "Remove Relationship Type" +"Add Relationship"+"Add Relationship Type"+"Remove Relationship"+"Display Relationsips");  
-             
+     
+
    
-    /*public ArrayList<String>choices()
-      {
-          ArrayList<String>temp=new ArrayList<String>();
-         temp.add("Add Person"+"Add Relationship"+"Add Relationship Type"+"Remove Relationship"+"Display Relationsips");  
-               return temp; 
-      }
-    
-    public String prompt(int a)
-    {
-        Scanner input =new Scanner(System.in);
-        a=input.nextInt();
-    
-    }
-    */
-    public static final int CANCEL_OPTION = -1;
+        public static final int CANCEL_OPTION = -1;
 
     
     
@@ -146,6 +131,80 @@ public class UserInterface {
          return null;
         
     }
+    
+    public ArrayList<String> addRelationshipType()
+    {
+        Scanner input =new Scanner(System.in);
+        ArrayList<String>temp=new ArrayList<String>();
+        System.out.println("What is the male version of the relationship?");
+        temp.add(input.nextLine());
+        System.out.println("What is the female version of the relationship?");
+        temp.add(input.nextLine());
+        System.out.println("What is the gender neutral version of the relationship?");
+        temp.add(input.nextLine());
+        return temp;
+    }
+    
+    public String addPerson()
+    {
+        Scanner input =new Scanner(System.in);
+        System.out.println("Type the name of the person to add");
+        String name =input.nextLine();  
+        male();
+        return name;
+        
+    }
+    
+    public boolean male()
+    {
+        Scanner input =new Scanner(System.in);
+        System.out.println("Are they male? yes  or no.");
+        String response = input.nextLine();
+        if(response.equals("yes"))
+            return true;
+        else
+            return false;
+    }
+    
+    public ArrayList<Integer>addRelationship(ArrayList<String>people,ArrayList<String>relationshipTypes)
+    {
+        ArrayList<Integer>relationships=new ArrayList<Integer>();
+        Scanner input =new Scanner(System.in);
+        System.out.println("Choose the first person in the relationship.");
+        for(int i=0;i<people.size();i++)
+        {
+            System.out.println(i+"."+people.get(i));
+        }
+        relationships.add(input.nextInt());
+        
+        System.out.println("What type of relationship");
+        for(int i=0;i<relationshipTypes.size();i++)
+        {
+            System.out.println(i+"."+relationshipTypes.get(i));
+        }
+        relationships.add(input.nextInt());
+        
+        for(int i=0;i<people.size();i++)
+        {
+            System.out.println(i+"."+people.get(i));
+        }
+        relationships.add(input.nextInt());
+        return relationships;
+    }
+    /*public String removePerson()
+    {
+        Scanner input =new Scanner(System.in);
+        System.out.println("Type the name of the person to remove");
+        String name =input.nextLine();  
+        return name;
+        
+    }*/
+    
+    
+    
+
+
+    
     
 
 }
