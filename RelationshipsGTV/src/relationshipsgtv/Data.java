@@ -82,12 +82,20 @@ public class Data
     // Returning data from maps
     // ---------------
     
+    /**
+     * Returns an ArrayList of the names of all of the people in the People HashMap, in the order of entry.
+     * @return 
+     */
     public ArrayList<String> getPeopleNames()
     {
         return null;
         
     }
     
+    /**
+     * Returns an ArrayList of the NeutralVersions of all of the RelationshipTypes in the RelationshipTypes HashMap, in the order of entry.
+     * @return 
+     */
     public ArrayList<String> getNeutralRelationshipTypes()
     {
         return null;
