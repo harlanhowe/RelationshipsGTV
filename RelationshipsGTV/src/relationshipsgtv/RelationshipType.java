@@ -10,35 +10,45 @@ package relationshipsgtv;
  */
 public class RelationshipType 
 {
-    private String primaryVersion, inverseVersion, neutralVersion;
+    private String primaryMale, primaryFemale, neutral, inverseMale, inverseFemale;
     private int iD;
     
-    public RelationshipType(String newPrimaryVersion, String newNeutralVersion, String newInverseVersion)
+    public RelationshipType(String newPrimaryMale, String newPrimaryFemale, String newNeutral, String newInverseMale, String newInverseFemale)
     {
-        primaryVersion = newPrimaryVersion;
-        neutralVersion = newNeutralVersion;
-        inverseVersion = newInverseVersion;
+        primaryMale = newPrimaryMale;
+        primaryFemale = newPrimaryFemale;
+        neutral = newNeutral;
+        inverseMale = newInverseMale;
+        inverseFemale = newInverseFemale;
     }
     
-    public String getPrimaryVersion()
+    public String getPrimaryMale()
     {
-        return primaryVersion;
+        return primaryMale;
     }
-    public String getNeutralVersion()
+    public String getPrimaryFemale()
     {
-        return neutralVersion;
+        return primaryFemale;
     }
-    public String getInverseVersion()
+    public String getNeutral()
     {
-        return inverseVersion;
+        return neutral;
     }
+    public String getInverseMale()
+    {
+        return inverseMale;
+    }
+    public String getInverseFemale()
+    {
+        return inverseFemale;
+    }
+    
     
     
     public void setID(int newID)
     {
         iD = newID;
     }
-    
     public int getID()
     {
         return iD;
