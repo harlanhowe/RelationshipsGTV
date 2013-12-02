@@ -25,7 +25,6 @@ public class RelationshipsGTV {
      
      * @param args the command line arguments
      */
-    private File preferredFile;
     
     
     public static void main(String[] args) 
@@ -36,17 +35,12 @@ public class RelationshipsGTV {
     }
     
     
-    public void save()
+    public void savePeople()
     {
-        JFileChooser chooser = new JFileChooser();
-        chooser.setSelectedFile(preferredFile);
-        int result = chooser.showSaveDialog(null);
-        if (result == JFileChooser.APPROVE_OPTION) // if the user clicked "save"
-        {
-            preferredFile = chooser.getSelectedFile();
+        
             try
             {
-                PrintWriter output = new PrintWriter(preferredFile);
+                PrintWriter output = new PrintWriter(new File ("Saves/PeopleSave.txt"));
                 // you can now write to the file by saying
                 // output.println("Here is example stuff to save....");
                 // put your output code here!
@@ -58,8 +52,9 @@ public class RelationshipsGTV {
             }
             catch (FileNotFoundException fnfe)
             {
-                throw new RuntimeException("File "+preferredFile+" cannot be saved.");
+                System.out.println("Something went wrong.");
+                throw new RuntimeException("People cannot be saved.");
             }
-        }
+        
     }
 }
