@@ -10,19 +10,25 @@ package relationshipsgtv;
  */
 public class Person 
 {
-    private String name;
+    private String firstName,lastName;
     private boolean male;
     private int iD;
     
-    public Person(String firstName,String lastName, boolean isMale)
+    public Person(String newFirstName,String newLastName, boolean isMale)
     {
-        name = firstName+lastName;
+        firstName=newFirstName;
+        lastName=newLastName;
         male = isMale;
     }
     
-    public String getName()
+    public String getFirstName()
     {
-        return name;
+        return firstName;
+    }
+    
+    public String getLastName()
+    {
+        return lastName;
     }
     
     public boolean getMale()
