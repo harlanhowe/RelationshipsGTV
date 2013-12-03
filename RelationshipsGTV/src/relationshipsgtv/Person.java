@@ -14,9 +14,9 @@ public class Person
     private boolean male;
     private int iD;
     
-    public Person(String newName, boolean isMale)
+    public Person(String firstName,String lastName, boolean isMale)
     {
-        name = newName;
+        name = firstName+lastName;
         male = isMale;
     }
     
