@@ -20,6 +20,10 @@ public class Person
         lastName=newLastName;
         male = isMale;
     }
+    public String toString()
+    {   
+    return firstName+""+lastName;
+    }
     
     public String getFirstName()
     {
