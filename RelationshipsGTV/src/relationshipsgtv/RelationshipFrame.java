@@ -6,6 +6,8 @@ package relationshipsgtv;
 
 import javax.swing.JOptionPane;
 import relationshipsgtv.Data;
+import relationshipsgtv.Person;
+import relationshipsgtv.RelationshipType;
 /**
  *
  * @author harlan.howe
@@ -50,14 +52,15 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         
         // fill the array in with your names, from whatever data structure you 
         //   have.
-        // DONE: You do this! (updatePeopleList - size and fill list)
-        for(int i=0;i<myData.getPeopleNames().size();i++)
+        // TODONE_Tareck: You do this! (updatePeopleList - size and fill list)
+        /*for(int i=0;i<myData.getPeopleNames().size();i++)
         {
             names[i]=myData.getPeopleNames().get(i);
         }
         
         // send the array of Strings to the JList of people onscreen:
         personList.setListData(names);
+        * */
     }
     
     /**
@@ -743,8 +746,8 @@ public final class RelationshipFrame extends javax.swing.JFrame {
             
             
         }
-        if (selectedRelationship == null)
-            return;
+        //if (selectedRelationship == null)
+        //   return;
         String whichThingToDelete = "";
         int response = JOptionPane.showConfirmDialog(this,
                 "Are you sure you want to delete"+whichThingToDelete+"?",
@@ -820,16 +823,13 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         String last = lastNameField.getText();
         boolean isMale = genderMaleButton.isSelected();
         // Create a new person and add them to your list of people.
-        // TODO: You do this! (addPersonButton)
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        // TODONE_Tareck: You do this! (addPersonButton)
+        Person newPerson=new Person(first,last,isMale);
+        myData.people.put(myData.people.size(), newPerson); 
+        for(int i=0;i<myData.people.size();i++)
+        {
+                System.out.println(myData.people.values());
+        }
     }//GEN-LAST:event_addPersonButtonActionPerformed
 /**
  * the user just pressed the addRelationshipButton, and now its time to respond.
