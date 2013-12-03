@@ -4,6 +4,9 @@
  */
 package relationshipsgtv;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -99,5 +102,39 @@ public class Data
     public ArrayList<String> getNeutralRelationshipTypes()
     {
         return null;
+    }
+    
+    
+    //--------------
+    //Saving!
+    //--------------
+    public void savePeople()
+    {
+        
+            try
+            {
+                PrintWriter output = new PrintWriter(new File ("Saves/PeopleSave.txt"));
+                // you can now write to the file by saying
+                // output.println("Here is example stuff to save....");
+                // put your output code here!
+                for (Object o: people.entrySet())
+                {
+                    Person p = (Person)o;
+                    int id = p.getID();
+                    String firstName = p.getFirstName();
+                    String lastName = p.getLastName();
+                    
+                    output.println(id+"\t"+firstName+"\t"+lastName);
+                }
+                
+                
+                
+                output.close();
+            }
+            catch (FileNotFoundException fnfe)
+            {
+                System.out.println("Something went wrong.");
+                throw new RuntimeException("People cannot be saved.");
+            }
     }
 }
