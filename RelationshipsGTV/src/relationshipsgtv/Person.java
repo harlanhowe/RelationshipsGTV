@@ -22,7 +22,7 @@ public class Person
     }
     public String toString()
     {   
-    return firstName+""+lastName;
+    return firstName+" "+lastName;
     }
     
     public String getFirstName()
