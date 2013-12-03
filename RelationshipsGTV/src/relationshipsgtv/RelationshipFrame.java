@@ -5,7 +5,7 @@
 package relationshipsgtv;
 
 import javax.swing.JOptionPane;
-
+import relationshipsgtv.Data;
 /**
  *
  * @author harlan.howe
@@ -15,7 +15,7 @@ public final class RelationshipFrame extends javax.swing.JFrame {
      * which person is currently selected, or -1 if none are.
      */
     private int currentPersonIndex; 
-    
+    Data myData=new Data();
     /**
      * Creates new form RelationshipFrame
      */
@@ -50,11 +50,11 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         
         // fill the array in with your names, from whatever data structure you 
         //   have.
-        // TODO: You do this! (updatePeopleList - size and fill list)
-        
-        
-        
-        
+        // DONE: You do this! (updatePeopleList - size and fill list)
+        for(int i=0;i<myData.getPeopleNames().size();i++)
+        {
+            names[i]=myData.getPeopleNames().get(i);
+        }
         
         // send the array of Strings to the JList of people onscreen:
         personList.setListData(names);
@@ -706,7 +706,7 @@ public final class RelationshipFrame extends javax.swing.JFrame {
     private void removeRelationshipButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeRelationshipButtonActionPerformed
         
         
-        Relationship selectedRelationship = null;
+       // Relationship selectedRelationship = null;
         if (relationshipTabPanel.getSelectedIndex()==0) // if we are showing
                                                         // the list view
         {
@@ -728,7 +728,7 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         else if (relationshipTabPanel.getSelectedIndex() ==1 ) // if we are
                                               // showing the personal map view 
         {
-            if (personalMap.getSelectedObjectId()==-1)// bail if no
+            if (personalMapPane1.getSelectedObjectId()==-1)// bail if no
                                                 // relationship is selected.
                 return;
             // Identify which relationship is selected, and do what you need to
