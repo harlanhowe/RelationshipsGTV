@@ -31,30 +31,8 @@ public class RelationshipsGTV {
     {
         // TODO code application logic here
         //thing    
-        
     }
     
     
-    public void savePeople()
-    {
-        
-            try
-            {
-                PrintWriter output = new PrintWriter(new File ("Saves/PeopleSave.txt"));
-                // you can now write to the file by saying
-                // output.println("Here is example stuff to save....");
-                // put your output code here!
-                
-             
-                
-                
-                output.close();
-            }
-            catch (FileNotFoundException fnfe)
-            {
-                System.out.println("Something went wrong.");
-                throw new RuntimeException("People cannot be saved.");
-            }
-        
-    }
+    
 }
