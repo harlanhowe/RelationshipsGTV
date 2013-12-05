@@ -4,6 +4,7 @@
  */
 package relationshipsgtv;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import relationshipsgtv.Data;
 import relationshipsgtv.Person;
@@ -884,6 +885,17 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         // Create a relationship and add it to your collection of relationships.
         // TODO: You do this! (addRelationshipButton - create relationship)
         
+        ArrayList people = new ArrayList<String>();
+        ArrayList relationType = new ArrayList<String>();
+        people = myData.getPeopleNames();
+        relationType = myData.getNeutralRelationshipTypes();
+        String secondname = (String)people.get(personIndex);
+        
+        Person firstperson = new Person(null,null,true);
+        Person secondperson = new Person(secondname,null,true);
+        RelationshipType relType = new RelationshipType(null,null,null,null,null);
+        
+        myData.addRelationship(firstperson, relType, secondperson);
         
         
         
