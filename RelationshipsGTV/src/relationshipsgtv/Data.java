@@ -4,6 +4,9 @@
  */
 package relationshipsgtv;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -13,7 +16,9 @@ import java.util.HashMap;
  */
 public class Data 
 {
-    public HashMap people, relationshipTypes, relationships;
+    public HashMap<Integer, Person> people;
+    public HashMap<Integer, RelationshipType> relationshipTypes;
+    public HashMap<Integer, ArrayList<Integer>> relationships;
     private int peopleID, relationshipTypesID, relationshipsID;
     
     public Data()
@@ -83,13 +88,17 @@ public class Data
     // ---------------
     
     /**
-     * Returns an ArrayList of the names of all of the people in the People HashMap, in the order of entry.
+     * Returns an ArrayList of the names (from toString()) of all of the people in the People HashMap, in the order of entry.
      * @return 
      */
     public ArrayList<String> getPeopleNames()
     {
-        return null;
-        
+        ArrayList<String> peopleNames = new ArrayList<String>();
+        for (Integer id: people.keySet())
+        {
+            peopleNames.add(people.get(id).toString());
+        }
+        return peopleNames;
     }
     
     /**
@@ -98,6 +107,116 @@ public class Data
      */
     public ArrayList<String> getNeutralRelationshipTypes()
     {
-        return null;
+        ArrayList<String> neutrals = new ArrayList<String>();
+        for (Integer id: relationshipTypes.keySet())
+        {
+            neutrals.add(relationshipTypes.get(id).getNeutral());
+        }
+        return neutrals;
     }
+    
+    
+    //--------------
+    //Saving!
+    //--------------
+    /**
+     * Saves the data in the "people" HashMap to project/saves/peopleSave.txt.
+     * @return 
+     */
+    public void savePeople()
+    {
+        try
+        {
+            PrintWriter output = new PrintWriter(new File ("saves/peopleSave.txt"));
+            
+            for (Integer id: people.keySet())
+            {
+                String firstName = people.get(id).getFirstName();
+                String lastName = people.get(id).getLastName();
+                Boolean male = people.get(id).getMale();
+
+                output.println(id+"\t"+firstName+"\t"+lastName+"\t"+male);
+            }
+
+
+
+            output.close();
+        }
+        catch (FileNotFoundException fnfe)
+        {
+            System.out.println("Something went wrong.");
+            throw new RuntimeException("people cannot be saved.");
+        }
+    }
+    /**
+     * Saves the data in the "relationshipTypes" HashMap to project/saves/relTypesSave.txt.
+     * @return 
+     */
+    public void saveRelationshipTypes()
+    {
+        try
+        {
+            PrintWriter output = new PrintWriter(new File ("saves/relTypesSave.txt"));
+            
+            for (Integer id: relationshipTypes.keySet())
+            {
+                String primaryMale = relationshipTypes.get(id).getPrimaryMale();
+                String primaryFemale = relationshipTypes.get(id).getPrimaryFemale();
+                String neutral = relationshipTypes.get(id).getNeutral();
+                String inverseMale = relationshipTypes.get(id).getInverseMale();
+                String inverseFemale = relationshipTypes.get(id).getInverseFemale();
+
+                output.println(id+"\t"+primaryMale+"\t"+primaryFemale+"\t"+neutral+"\t"+inverseMale+"\t"+inverseFemale);
+            }
+
+
+
+            output.close();
+        }
+        catch (FileNotFoundException fnfe)
+        {
+            System.out.println("Something went wrong.");
+            throw new RuntimeException("relationshipTypes cannot be saved.");
+        }
+    }
+    /**
+     * Saves the data in the "relationships" HashMap to project/saves/relationshipsSave.txt.
+     * @return
+     */
+    public void saveRelationships()
+    {
+        try
+        {
+            PrintWriter output = new PrintWriter(new File ("saves/relationshipsSave.txt"));
+            
+            for (Integer id: relationships.keySet())
+            {
+                int person1ID = relationships.get(id).get(0);
+                int relationshipTypeID = relationships.get(id).get(1);
+                int person2ID = relationships.get(id).get(2);
+
+                output.println(id+"\t"+person1ID+"\t"+relationshipTypeID+"\t"+person2ID);
+            }
+
+
+
+            output.close();
+        }
+        catch (FileNotFoundException fnfe)
+        {
+            System.out.println("Something went wrong.");
+            throw new RuntimeException("relationships cannot be saved.");
+        }
+    }
+    
+    
+    //--------------
+    //Loading!
+    //--------------
+    public void loadPeople()
+    {}
+    public void loadRelationshipTypes()
+    {}
+    public void loadRelationships()
+    {}
 }
