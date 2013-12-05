@@ -4,10 +4,8 @@
  */
 package relationshipsgtv;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import relationshipsgtv.Data;
-import relationshipsgtv.Person;
-import relationshipsgtv.RelationshipType;
 /**
  *
  * @author harlan.howe
@@ -48,19 +46,21 @@ public final class RelationshipFrame extends javax.swing.JFrame {
     {
         // create a new array of Strings the size of the number of people to
         //   display.
-        String[] names = new String[0]; // = new String[???];
-        
+        //String[] names = new String[0]; // = new String[???];
+        ArrayList<String>names=new ArrayList<String>();
         // fill the array in with your names, from whatever data structure you 
         //   have.
         // TODONE_Tareck: You do this! (updatePeopleList - size and fill list)
-        /*for(int i=0;i<myData.getPeopleNames().size();i++)
+        for(int i=0;i<myData.getPeopleNames().size();i++)
         {
-            names[i]=myData.getPeopleNames().get(i);
+           // names[i]=myData.getPeopleNames().get(i);
+            names.add(myData.getPeopleNames().get(i));
         }
         
         // send the array of Strings to the JList of people onscreen:
-        personList.setListData(names);
-        * */
+       
+        personList.setListData(names.toArray());
+      
     }
     
     /**
@@ -73,19 +73,26 @@ public final class RelationshipFrame extends javax.swing.JFrame {
     {
         // create a new array of Strings the size of the number of people to
         //  display ... which might be zero if there is no selected person.
-        String[] relationshipStrings=new String[0];
-        
+        //String[] relationshipStrings=new String[0];
+        ArrayList<String>relationshipStrings=new ArrayList<String>();
         
         // fill the array with Strings describing each relationship for the 
         // selected person.
-        // TODO: You do this! (updateRelationshipList - fill array)
-        
+        // TODONE_Tareck: You do this! (updateRelationshipList - fill array)
+       String temp="";
+        for(int i=0;i<myData.relationships.size();i++)
+        {
+            temp+=myData.people.get(myData.relationships.get(i).get(0)); 
+            temp+=myData.relationshipTypes.get(myData.relationships.get(i).get(1));
+            temp+=myData.people.get(myData.relationships.get(i).get(2));
+            relationshipStrings.add(temp);
+        }
         
         
         
         // tell the onscreen JList about the array of strings and tell it to
         // update its appearance.
-        relationshipList.setListData(relationshipStrings);
+        relationshipList.setListData(relationshipStrings.toArray());
         relationshipList.validate();
         
     }
@@ -830,6 +837,7 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         {
                 System.out.println(myData.people.values());
         }
+        updatePeopleList();
     }//GEN-LAST:event_addPersonButtonActionPerformed
 /**
  * the user just pressed the addRelationshipButton, and now its time to respond.
@@ -933,28 +941,26 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         String revFemaleName = revFemaleRTNameField.getText();
         
         //Ok. Now create a relationship type based on this.
-        // TODO: You do this! (addTypeButton)
-        
-        
-        
-        
-        
-        
-        
-        
+        // TODONE_Tareck: You do this! (addTypeButton)
+        RelationshipType newRelationship=new RelationshipType(fwdMaleName,fwdFemaleName,genericName,revMaleName,revFemaleName);
+        myData.relationshipTypes.put(myData.relationshipTypes.size(), newRelationship);
+
         
         // Create a new list of RelationshipType strings and populate it with
         //  your revised list of relationship types.
-        // TODO: You do this! (addRelationshipTypeButton update the type list)
-        String[] rtListNames = new String[0];
-                
-       
+        // TODONE_Tareck: You do this! (addRelationshipTypeButton update the type list)
+        //String[] rtListNames = new String[0];
+        ArrayList<String>rtListNames=new ArrayList<String>();
+        for(int i=0;i<myData.relationshipTypes.size();i++)
+        {
+        rtListNames.add(myData.relationshipTypes.get(i).getNeutral());
+        }
         
         
         
         
         // update the list of relationship types in the previous dialog box.
-        relTypeList.setListData(rtListNames);
+        relTypeList.setListData(rtListNames.toArray());
         
         
     }//GEN-LAST:event_addTypeButtonActionPerformed
