@@ -23,7 +23,7 @@ public class Controller {
     
     class Action {
         
-        Person person = new Person(null,true);
+        Person person = new Person(null,null,true);
         RelationshipType relType = new RelationshipType(null,null,null,null,null);
         
         public void newPerson()
