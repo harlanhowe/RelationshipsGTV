@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 /**
  *
@@ -33,10 +34,10 @@ public class Data
     
     
     
+    
     // --------
     // Adding things to the maps
     // --------
-    
     /**
      * This adds a new Person to the People HashMap.
      * @param newPerson 
@@ -83,10 +84,10 @@ public class Data
     
     
     
+    
     // ---------------
     // Returning data from maps
     // ---------------
-    
     /**
      * Returns an ArrayList of the names (from toString()) of all of the people in the People HashMap, in the order of entry.
      * @return 
@@ -114,6 +115,9 @@ public class Data
         }
         return neutrals;
     }
+    
+    
+    
     
     
     //--------------
@@ -210,13 +214,114 @@ public class Data
     }
     
     
+    
+    
+    
     //--------------
     //Loading!
     //--------------
+    /**
+     * Loads the people data that has previously been saved to project/saves/peopleSave.txt, 
+     * and adds it all to the people HashMap in its original order.
+     * @return 
+     */
     public void loadPeople()
-    {}
+    {
+        try
+        {
+            File theFile = new File("saves/peopleSave.txt");
+            int i=0;
+            Scanner peopleScanner = new Scanner(theFile);
+            while (peopleScanner.hasNextLine())
+            {
+                String inputLine = peopleScanner.nextLine();
+                String[] parts = inputLine.split("\t");
+                
+                int id = Integer.parseInt(parts[0]);
+                String firstName = parts[1];
+                String lastName = parts[2];
+                boolean male = Boolean.parseBoolean(parts[3]);
+                
+                Person newPerson = new Person(firstName, lastName, male);
+                newPerson.setID(id);
+                people.put(id, newPerson);
+            }
+        }
+        catch (FileNotFoundException fnfe)
+        {
+            System.out.println("Something went wrong.");
+            throw new RuntimeException("Couldn't load people.");
+        }
+    }
+    /**
+     * Loads the relationshipTypes data that has previously been saved to project/saves/relTypesSave.txt, 
+     * and adds it all to the relationshipTypes HashMap in its original order.
+     * @return 
+     */
     public void loadRelationshipTypes()
-    {}
+    {
+        try
+        {
+            File theFile = new File("saves/relTypesSave.txt");
+            int i=0;
+            Scanner relTypesScanner = new Scanner(theFile);
+            while (relTypesScanner.hasNextLine())
+            {
+                String inputLine = relTypesScanner.nextLine();
+                String[] parts = inputLine.split("\t");
+                
+                int id = Integer.parseInt(parts[0]);
+                String primaryMale = parts[1];
+                String primaryFemale = parts[2];
+                String neutral = parts[3];
+                String inverseMale = parts[4];
+                String inverseFemale = parts[5];
+                
+                RelationshipType newRelationshipType = new RelationshipType(primaryMale,primaryFemale,neutral,inverseMale,inverseFemale);
+                newRelationshipType.setID(id);
+                relationshipTypes.put(id, newRelationshipType);
+            }
+        }
+        catch (FileNotFoundException fnfe)
+        {
+            System.out.println("Something went wrong.");
+            throw new RuntimeException("Couldn't load relationshipTypes.");
+        }
+    }
+    /**
+     * Loads the relationships data that has previously been saved to project/saves/relationshipsSave.txt, 
+     * and adds it all to the relationships HashMap in its original order.
+     * @return 
+     */
     public void loadRelationships()
-    {}
+    {
+        try
+        {
+            File theFile = new File("saves/relationshipsSave.txt");
+            int i=0;
+            Scanner relationshipsScanner = new Scanner(theFile);
+            while (relationshipsScanner.hasNextLine())
+            {
+                String inputLine = relationshipsScanner.nextLine();
+                String[] parts = inputLine.split("\t");
+                
+                int id = Integer.parseInt(parts[0]);
+                int person1ID = Integer.parseInt(parts[1]);
+                int relTypeID = Integer.parseInt(parts[2]);
+                int person2ID = Integer.parseInt(parts[3]);
+                
+                ArrayList<Integer> idArray = new ArrayList<Integer>();
+                idArray.add(person1ID);
+                idArray.add(relTypeID);
+                idArray.add(person2ID);
+                
+                relationships.put(id, idArray);
+            }
+        }
+        catch (FileNotFoundException fnfe)
+        {
+            System.out.println("Something went wrong.");
+            throw new RuntimeException("Couldn't load relationships.");
+        }
+    }
 }
