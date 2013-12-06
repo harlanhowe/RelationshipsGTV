@@ -29,7 +29,7 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         myData.loadPeople();
         myData.loadRelationshipTypes();
         myData.loadRelationships();
-        
+        relTypeList.setListData(myData.getNeutralRelationshipTypes().toArray());
         
         
         
