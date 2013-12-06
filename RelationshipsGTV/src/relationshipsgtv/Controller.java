@@ -30,7 +30,7 @@ public class Controller {
         {
             String inputName = theUserInterface.addPerson();
             boolean sex = theUserInterface.male();
-            inputName = person.getName();
+           // inputName = person.getName();
             sex = person.getMale();
             theData.addToPeople(person);
             
