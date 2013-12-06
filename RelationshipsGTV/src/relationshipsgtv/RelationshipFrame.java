@@ -984,13 +984,11 @@ public final class RelationshipFrame extends javax.swing.JFrame {
     private void SaveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveMenuItemActionPerformed
         // I suggest that you tell your controller to do the saving, and let it
         // delegate, as needed.
-        // TODO: You do this! (SaveMenuItem)
-       
-        
-        
-        
-        
-        
+        // TODO Tareck: You do this! (SaveMenuItem)
+        myData.savePeople();
+        myData.saveRelationshipTypes();
+        myData.saveRelationships();
+         
     }//GEN-LAST:event_SaveMenuItemActionPerformed
 
     /**
