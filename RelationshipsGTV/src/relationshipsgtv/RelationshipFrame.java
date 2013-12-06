@@ -26,7 +26,9 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         // I recommend you create an instance of your controller... and give
         // a copy to your "specialty" views.
         // TODO  you do this! (constructor)
-        
+        myData.loadPeople();
+        myData.loadRelationshipTypes();
+        myData.loadRelationships();
         
         
         
