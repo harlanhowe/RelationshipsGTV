@@ -27,8 +27,8 @@ public class Data
         people = new HashMap<Integer, Person>();
         relationshipTypes = new HashMap<Integer, RelationshipType>();
         relationships = new HashMap<Integer, ArrayList<Integer>>();
-        peopleID = 1;
-        relationshipTypesID = 1;
+        peopleID = 0;
+        relationshipTypesID = 0;
     }
     
     
@@ -230,7 +230,6 @@ public class Data
         try
         {
             File theFile = new File("saves/peopleSave.txt");
-            int i=0;
             Scanner peopleScanner = new Scanner(theFile);
             while (peopleScanner.hasNextLine())
             {
@@ -263,7 +262,6 @@ public class Data
         try
         {
             File theFile = new File("saves/relTypesSave.txt");
-            int i=0;
             Scanner relTypesScanner = new Scanner(theFile);
             while (relTypesScanner.hasNextLine())
             {
@@ -298,7 +296,6 @@ public class Data
         try
         {
             File theFile = new File("saves/relationshipsSave.txt");
-            int i=0;
             Scanner relationshipsScanner = new Scanner(theFile);
             while (relationshipsScanner.hasNextLine())
             {
