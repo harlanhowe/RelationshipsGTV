@@ -82,6 +82,24 @@ public class Data
     }
     
     
+    // --------
+    // Removing things from maps
+    // --------
+    /**
+     * Removes the person from "people" and removes all relationships from "relationships" involving that person.
+     * @param personToDie 
+     */
+    public void removePerson(Person personToDie)
+    {
+        int fatalID = personToDie.getID();
+        people.remove(fatalID);
+        for (int i: relationships.keySet())
+        {
+            ArrayList<Integer> entry = relationships.get(i);
+            if (entry.get(0) == fatalID || entry.get(2) == fatalID)
+                relationships.remove(i);
+        }
+    }
     
     
     
@@ -116,7 +134,15 @@ public class Data
         return neutrals;
     }
     
-    
+    public Person getPersonForName(String nameToFind)
+    {
+        for (int i: people.keySet())
+        {
+            if (people.get(i).toString().equals(nameToFind))
+                return people.get(i);
+        }
+        return null;
+    }
     
     
     
