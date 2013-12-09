@@ -117,7 +117,7 @@ public class PersonalMapPane extends JPanel
         int height = this.getBounds().height;
         circleDiam = Math.min(width/10, height/10);        
         if (numRelationships>0)
-            return (int)(width/2-circleDiam*4*Math.cos(2*index*Math.PI/numRelationships));
+            return (int)(height/2-circleDiam*4*Math.cos(2*index*Math.PI/numRelationships));
         return -1;
     }
     
@@ -136,11 +136,17 @@ public class PersonalMapPane extends JPanel
         // define the number of relationships for the current person.
         // TODO: you do this (handleMouseClick countRels)
         
+        numRelationships = 5;
         int numRels = 0;
         
         // loop over all the relationships for the current person...
         // TODO: you do this! (handleMouseClick loop) - just write the "for"
         //       or "while" statement.
+        for (numRels=0;numRels<=numRelationships;numRels++)
+        {
+            return;
+        }
+        
         {
             if (Math.pow(x-getCenterXForObject(i,numRels),2)+Math.pow(y-getCenterYForObject(i,numRels),2)<Math.pow(circleDiam,2))
             {
@@ -163,8 +169,11 @@ public class PersonalMapPane extends JPanel
     {
         super.paintComponent(g);
         // bail out if data is null, or if nobody is selected.....
-        // TODO: you do this! (paintComponent - bail)
-        
+        // TODONE Vincent: you do this! (paintComponent - bail)
+        if (selectedObjectId == -1 || data == null)
+        {
+            return;
+        }
         
         
         int width = this.getBounds().width;
