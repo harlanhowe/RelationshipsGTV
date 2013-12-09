@@ -789,8 +789,8 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         // (uses personList.getSelectedIndex().)
         // TODO: You do this! (personSelectionChanged)
         
-        
-        
+       personList.getSelectedIndex();
+       
         
         
         
@@ -800,7 +800,9 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         updateRelationshipList();
         updatePersonalMap();
     }//GEN-LAST:event_personSelectionChanged
-/**
+
+    
+    /**
  * the user just clicked on the addPersonButton, and now it's time to respond.
  * @param evt a description of the event (e.g., when did they click, exactly;
  * were they holding the option button, etc.) You probably won't use this
@@ -865,9 +867,18 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         ArrayList<String>names=new ArrayList<String>();
         ArrayList<String>typeStrings=new ArrayList<String>();
         typeStrings=myData.getNeutralRelationshipTypes();
-        
-        
-        
+        names=myData.getPeopleNames();
+        names.remove(personList.getSelectedIndex());
+        int a =personList.getSelectedIndex();
+        int id;
+        for(Person person:(ArrayList<Person>)myData.people.values())
+        {
+            if(person.toString().equals(myData.getPeopleNames().get(a)))
+            {
+                id=person.getID();
+            }
+            
+        }
         
         
         
@@ -894,8 +905,8 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         // Create a relationship and add it to your collection of relationships.
        // ArrayList<Integer>relationship=new ArrayList<Integer>();
         // TODO: You do this! (addRelationshipButton - create relationship)
+        ArrayList<Integer>relationship=new ArrayList<Integer>();
         
-     
         
         
         
