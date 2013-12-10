@@ -789,7 +789,7 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         // (uses personList.getSelectedIndex().)
         // TODO: You do this! (personSelectionChanged)
         
-       personList.getSelectedIndex();
+       //personList.getSelectedIndex();
        
         
         
@@ -870,7 +870,7 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         names=myData.getPeopleNames();
         names.remove(personList.getSelectedIndex());
         int a =personList.getSelectedIndex();
-        int id;
+        int id=0;
         for(Person person:(ArrayList<Person>)myData.people.values())
         {
             if(person.toString().equals(myData.getPeopleNames().get(a)))
@@ -906,13 +906,11 @@ public final class RelationshipFrame extends javax.swing.JFrame {
        // ArrayList<Integer>relationship=new ArrayList<Integer>();
         // TODO: You do this! (addRelationshipButton - create relationship)
         ArrayList<Integer>relationship=new ArrayList<Integer>();
+        relationship.add(id);
+        relationship.add(relTypeIndex);
+        relationship.add(personIndex);
         
-        
-        
-        
-       
-        
-        
+      
         
         // update the relationships displayed...
         updateRelationshipList();
