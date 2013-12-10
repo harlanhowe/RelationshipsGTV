@@ -144,6 +144,16 @@ public class Data
         return null;
     }
     
+    public Person getPersonForID(int idToFind)
+    {
+        for (int i: people.keySet())
+        {
+            if (i == idToFind)
+                return people.get(i);
+        }
+        return null;
+    }
+    
     
     
     //--------------
