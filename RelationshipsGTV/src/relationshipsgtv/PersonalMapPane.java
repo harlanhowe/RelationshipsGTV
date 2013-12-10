@@ -134,20 +134,18 @@ public class PersonalMapPane extends JPanel
             return;
         int i=0;
         // define the number of relationships for the current person.
-        // TODO: you do this (handleMouseClick countRels)
-        
-        numRelationships = 5;
+        // TODONE Vincent: you do this (handleMouseClick countRels)
+        ArrayList rel = data.getRelationshipsForPersonID(currentPersonID);
+        numRelationships = rel.size();
         int numRels = 0;
         
         // loop over all the relationships for the current person...
-        // TODO: you do this! (handleMouseClick loop) - just write the "for"
+        // TODONE Vincent: you do this! (handleMouseClick loop) - just write the "for"
         //       or "while" statement.
         for (numRels=0;numRels<=numRelationships;numRels++)
         {
-            return;
-        }
+            
         
-        {
             if (Math.pow(x-getCenterXForObject(i,numRels),2)+Math.pow(y-getCenterYForObject(i,numRels),2)<Math.pow(circleDiam,2))
             {
                 // TODO: you do this! (handleMouseClick selectedID) - set the selectedObjectID to the id of the
@@ -155,7 +153,7 @@ public class PersonalMapPane extends JPanel
                 //selectedObjectId = ?????
                 
                 
-                
+
                 repaint();
                 return;
             }
@@ -195,8 +193,9 @@ public class PersonalMapPane extends JPanel
         g.fillOval(width/2-circleDiam/2,height/2-circleDiam/2,circleDiam,circleDiam);
         
         // Get the name of the current person, and set 'mainName' to it.
-        // TODO: You do this! (paintComponent - mainName)
-        String mainName = "Somebody";
+        // TODONE Vincent: You do this! (paintComponent - mainName)
+        Person firstPerson = data.getPersonForID(currentPersonID);
+        String mainName = firstPerson.toString();
         
         g.setColor(Color.BLACK);
         nameWidth = g.getFontMetrics().stringWidth(mainName);
