@@ -19,9 +19,9 @@ import javax.swing.JPanel;
 public class PersonalMapPane extends JPanel 
 {
     // you'll want a link to your controller here.
-    // TODO: add a variable to the class that holds your Controller.
+    // TODONE Vincent: add a variable to the class that holds your Controller.
     // private RelationshipData data;
-    
+    private Data data;
     
     private int currentPersonID;
    
@@ -54,12 +54,12 @@ public class PersonalMapPane extends JPanel
      * it up.
      * @param inData - a link to my controller class. 
      */
-    // TODO: you do this! (write the setData method.)
+    // TODONE Vincent: you do this! (write the setData method.)
     
-//    public void setData(RelationshipData inData)
-//    {
-//        data = inData;
-//    }
+    public void setData(Data inData)
+    {
+        data = inData;
+    }
 
     public int getSelectedObjectId() {
         return selectedObjectId;
@@ -117,7 +117,7 @@ public class PersonalMapPane extends JPanel
         int height = this.getBounds().height;
         circleDiam = Math.min(width/10, height/10);        
         if (numRelationships>0)
-            return (int)(width/2-circleDiam*4*Math.cos(2*index*Math.PI/numRelationships));
+            return (int)(height/2-circleDiam*4*Math.cos(2*index*Math.PI/numRelationships));
         return -1;
     }
     
@@ -135,11 +135,18 @@ public class PersonalMapPane extends JPanel
         int i=0;
         // define the number of relationships for the current person.
         // TODO: you do this (handleMouseClick countRels)
+        
+        numRelationships = 5;
         int numRels = 0;
         
         // loop over all the relationships for the current person...
         // TODO: you do this! (handleMouseClick loop) - just write the "for"
         //       or "while" statement.
+        for (numRels=0;numRels<=numRelationships;numRels++)
+        {
+            return;
+        }
+        
         {
             if (Math.pow(x-getCenterXForObject(i,numRels),2)+Math.pow(y-getCenterYForObject(i,numRels),2)<Math.pow(circleDiam,2))
             {
@@ -162,8 +169,11 @@ public class PersonalMapPane extends JPanel
     {
         super.paintComponent(g);
         // bail out if data is null, or if nobody is selected.....
-        // TODO: you do this! (paintComponent - bail)
-
+        // TODONE Vincent: you do this! (paintComponent - bail)
+        if (selectedObjectId == -1 || data == null)
+        {
+            return;
+        }
         
         
         int width = this.getBounds().width;
