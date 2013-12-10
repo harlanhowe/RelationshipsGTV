@@ -133,7 +133,6 @@ public class Data
         }
         return neutrals;
     }
-    
     public Person getPersonForName(String nameToFind)
     {
         for (int i: people.keySet())
@@ -143,7 +142,6 @@ public class Data
         }
         return null;
     }
-    
     public Person getPersonForID(int idToFind)
     {
         for (int i: people.keySet())
@@ -153,7 +151,21 @@ public class Data
         }
         return null;
     }
-    
+    /**
+     * Returns an ArrayList of the ID values for all of the relationships with the given person id as the first person in the relationship.
+     * @param idToFind
+     * @return 
+     */
+    public ArrayList<Integer> getRelationshipsForPersonID(int idToFind)
+    {
+        ArrayList<Integer> returnArray = new ArrayList<Integer>();
+        for (int i: relationships.keySet())
+        {
+            if (relationships.get(i).get(0) == idToFind)
+                returnArray.add(i);
+        }
+        return returnArray;
+    }
     
     
     //--------------
