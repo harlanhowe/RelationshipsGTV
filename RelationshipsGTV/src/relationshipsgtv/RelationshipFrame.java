@@ -789,8 +789,8 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         // (uses personList.getSelectedIndex().)
         // TODO: You do this! (personSelectionChanged)
         
-        
-        
+       //personList.getSelectedIndex();
+       
         
         
         
@@ -800,7 +800,9 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         updateRelationshipList();
         updatePersonalMap();
     }//GEN-LAST:event_personSelectionChanged
-/**
+
+    
+    /**
  * the user just clicked on the addPersonButton, and now it's time to respond.
  * @param evt a description of the event (e.g., when did they click, exactly;
  * were they holding the option button, etc.) You probably won't use this
@@ -862,18 +864,27 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         //       you don't want it to include the selected person.
         // Create an array of Strings for the relationship types
         // TODO: You do this! (addRelationshipButton - setup UI)
-        String[] names = new String[0];
-        String[] typeStrings = new String[0];
-        
-        
-        
-        
+        ArrayList<String>names=new ArrayList<String>();
+        ArrayList<String>typeStrings=new ArrayList<String>();
+        typeStrings=myData.getNeutralRelationshipTypes();
+        names=myData.getPeopleNames();
+        names.remove(personList.getSelectedIndex());
+        int a =personList.getSelectedIndex();
+        int id=0;
+        for(Person person:(ArrayList<Person>)myData.people.values())
+        {
+            if(person.toString().equals(myData.getPeopleNames().get(a)))
+            {
+                id=person.getID();
+            }
+            
+        }
         
         
         
         // update the JLists in the JPanel for the dialog with names and typeStrings
-        relatedPersonList.setListData(names);
-        relTypeList.setListData(typeStrings);
+        relatedPersonList.setListData(names.toArray());
+        relTypeList.setListData(typeStrings.toArray());
         // --------- STEP 2
         // show interface
         int response = JOptionPane.showConfirmDialog(this, newRelationshipPanel, "Add Relationship",JOptionPane.OK_CANCEL_OPTION);
@@ -892,25 +903,14 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         
         // respond - access interface to create response.
         // Create a relationship and add it to your collection of relationships.
+       // ArrayList<Integer>relationship=new ArrayList<Integer>();
         // TODO: You do this! (addRelationshipButton - create relationship)
+        ArrayList<Integer>relationship=new ArrayList<Integer>();
+        relationship.add(id);
+        relationship.add(relTypeIndex);
+        relationship.add(personIndex);
         
-        ArrayList people = new ArrayList<String>();
-        ArrayList relationType = new ArrayList<String>();
-        people = myData.getPeopleNames();
-        relationType = myData.getNeutralRelationshipTypes();
-        String secondname = (String)people.get(personIndex);
-        
-        Person firstperson = new Person(null,null,true);
-        Person secondperson = new Person(secondname,null,true);
-        RelationshipType relType = new RelationshipType(null,null,null,null,null);
-        
-        myData.addRelationship(firstperson, relType, secondperson);
-        
-        
-        
-       
-        
-        
+      
         
         // update the relationships displayed...
         updateRelationshipList();
