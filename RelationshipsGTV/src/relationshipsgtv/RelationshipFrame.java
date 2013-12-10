@@ -868,17 +868,12 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         ArrayList<String>typeStrings=new ArrayList<String>();
         typeStrings=myData.getNeutralRelationshipTypes();
         names=myData.getPeopleNames();
+        int id=myData.getPersonForName(names.get(personList.getSelectedIndex())).getID();
         names.remove(personList.getSelectedIndex());
-        int a =personList.getSelectedIndex();
-        int id=0;
-        for(Person person:(ArrayList<Person>)myData.people.values())
-        {
-            if(person.toString().equals(myData.getPeopleNames().get(a)))
-            {
-                id=person.getID();
-            }
-            
-        }
+        
+        // int a =personList.getSelectedIndex();
+        
+        //names.remove(myData.getPeopleNames().get(a));
         
         
         
