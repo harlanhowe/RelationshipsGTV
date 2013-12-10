@@ -81,14 +81,16 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         // fill the array with Strings describing each relationship for the 
         // selected person.
         // TODONE_Tareck: You do this! (updateRelationshipList - fill array)
-       String temp="";
+       /*String temp="";
         for(int i=0;i<myData.relationships.size();i++)
         {
             temp+=myData.people.get(myData.relationships.get(i).get(0)); 
             temp+=myData.relationshipTypes.get(myData.relationships.get(i).get(1));
             temp+=myData.people.get(myData.relationships.get(i).get(2));
             relationshipStrings.add(temp);
-        }
+            * }
+            */
+        
         
         
         
@@ -870,7 +872,7 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         names=myData.getPeopleNames();
         int id=myData.getPersonForName(names.get(personList.getSelectedIndex())).getID();
         names.remove(personList.getSelectedIndex());
-        
+            
         // int a =personList.getSelectedIndex();
         
         //names.remove(myData.getPeopleNames().get(a));
@@ -898,14 +900,12 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         
         // respond - access interface to create response.
         // Create a relationship and add it to your collection of relationships.
-       // ArrayList<Integer>relationship=new ArrayList<Integer>();
+        // ArrayList<Integer>relationship=new ArrayList<Integer>();
         // TODO: You do this! (addRelationshipButton - create relationship)
-        ArrayList<Integer>relationship=new ArrayList<Integer>();
-        relationship.add(id);
-        relationship.add(relTypeIndex);
-        relationship.add(personIndex);
-        
-      
+        Person first=myData.getPersonForID(id);
+        Person second = myData.getPersonForName(names.get(personIndex));
+        RelationshipType type= myData.getRelationshipTypeForNeutral(typeStrings.get(relTypeIndex));
+        myData.addRelationship(first, type, second);
         
         // update the relationships displayed...
         updateRelationshipList();

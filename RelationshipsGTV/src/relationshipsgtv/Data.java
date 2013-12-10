@@ -166,6 +166,15 @@ public class Data
         }
         return returnArray;
     }
+    public RelationshipType getRelationshipTypeForNeutral(String neutralToFind)
+    {
+        for (int i: relationshipTypes.keySet())
+        {
+            if (relationshipTypes.get(i).getNeutral().equals(neutralToFind))
+                return relationshipTypes.get(i);
+        }
+        return null;
+    }
     
     
     //--------------
