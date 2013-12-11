@@ -5,6 +5,7 @@
 package relationshipsgtv;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 /**
  *
@@ -96,20 +97,22 @@ public final class RelationshipFrame extends javax.swing.JFrame {
             int current=myData.getPersonForName(myData.getPeopleNames().get(selectedRow)).getID();
         ArrayList<String>temp=new ArrayList<String>();
       
+        
         for(int i:myData.getRelationshipsForPersonID(current))
        {
+          
            Person name1= myData.getPersonForID(current);
            Person name2=myData.getPersonForID(myData.relationships.get(i).get(2));
            RelationshipType type= myData.relationshipTypes.get(myData.relationships.get(i).get(1));
-          relationshipStrings.add(name1.toString()+" is "+type.getNeutral()+" of "+name2.toString()); 
-           //if(name1.getMale())
-           //{
-          // relationshipStrings.add(name1.toString()+" is "+type.getPrimaryMale().toString()+" of "+name2.toString()); 
-          // }
-           //if(!name1.getMale())
-          // {
-          // relationshipStrings.add(name1.toString()+" is "+type.getPrimaryFemale()+" of "+name2.toString()); 
-           //}
+          //relationshipStrings.add(name1.toString()+" is "+type.getNeutral()+" of "+name2.toString()); 
+          if(name1.getMale())
+           {
+           relationshipStrings.add(name1.toString()+" is "+type.getPrimaryMale().toString()+" of "+name2.toString()); 
+           }
+          if(!name1.getMale())
+          {
+           relationshipStrings.add(name1.toString()+" is "+type.getPrimaryFemale()+" of "+name2.toString()); 
+         }
         }
 
         // tell the onscreen JList about the array of strings and tell it to
@@ -749,9 +752,12 @@ public final class RelationshipFrame extends javax.swing.JFrame {
             // Identify which relationship is selected, and do what you need to
             // to remove it.
             // TODO: you do this! (removeRelationship - list view.)
-            
+            int selectedRow = personList.getSelectedIndex();
+            int current2=myData.getPersonForName(myData.getPeopleNames().get(selectedRow)).getID();
+            Person name1= myData.getPersonForID(current2);
         
-            
+           int current=relationshipList.getSelectedIndex();
+           myData.relationships.remove(myData.getRelationshipsForPersonID(current2).get(current));
             
             
             
@@ -876,13 +882,16 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         //       you don't want it to include the selected person.
         // Create an array of Strings for the relationship types
         // TODO: You do this! (addRelationshipButton - setup UI)
+        
         ArrayList<String>names=new ArrayList<String>();
         ArrayList<String>typeStrings=new ArrayList<String>();
         typeStrings=myData.getNeutralRelationshipTypes();
         names=myData.getPeopleNames();
-        int id=myData.getPersonForName(names.get(personList.getSelectedIndex())).getID();
+        int id=0;
+        if(personList.getSelectedIndex()!=-1){
+        id=myData.getPersonForName(names.get(personList.getSelectedIndex())).getID();
         names.remove(personList.getSelectedIndex());
-            
+        }
         // int a =personList.getSelectedIndex();
         
         //names.remove(myData.getPeopleNames().get(a));
@@ -912,11 +921,13 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         // Create a relationship and add it to your collection of relationships.
         // ArrayList<Integer>relationship=new ArrayList<Integer>();
         // TODO: You do this! (addRelationshipButton - create relationship)
+        if(personList.getSelectedIndex()!=-1)
+        {
         Person first=myData.getPersonForID(id);
         Person second = myData.getPersonForName(names.get(personIndex));
         RelationshipType type= myData.getRelationshipTypeForNeutral(typeStrings.get(relTypeIndex));
         myData.addRelationship(first, type, second);
-        
+        }
         // update the relationships displayed...
         updateRelationshipList();
         updatePersonalMap();
