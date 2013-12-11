@@ -836,11 +836,7 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         // Create a new person and add them to your list of people.
         // TODONE_Tareck: You do this! (addPersonButton)
         Person newPerson=new Person(first,last,isMale);
-        myData.people.put(myData.people.size(), newPerson); 
-        for(int i=0;i<myData.people.size();i++)
-        {
-                System.out.println(myData.people.values());
-        }
+        myData.addToPeople(newPerson);
         updatePeopleList();
     }//GEN-LAST:event_addPersonButtonActionPerformed
 /**
@@ -951,7 +947,7 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         //Ok. Now create a relationship type based on this.
         // TODONE_Tareck: You do this! (addTypeButton)
         RelationshipType newRelationship=new RelationshipType(fwdMaleName,fwdFemaleName,genericName,revMaleName,revFemaleName);
-        myData.relationshipTypes.put(myData.relationshipTypes.size(), newRelationship);
+        myData.addToRelationshipTypes(newRelationship);
 
         
         // Create a new list of RelationshipType strings and populate it with
@@ -961,7 +957,7 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         ArrayList<String>rtListNames=new ArrayList<String>();
         for(int i=0;i<myData.relationshipTypes.size();i++)
         {
-        rtListNames.add(myData.relationshipTypes.get(i).getNeutral());
+            rtListNames.add(myData.relationshipTypes.get(i).getNeutral());
         }
         
         
