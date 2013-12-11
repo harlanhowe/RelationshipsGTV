@@ -179,6 +179,15 @@ public class PersonalMapPane extends JPanel
         circleDiam = Math.min(width/10, height/10);
         int nameWidth;
         g.setFont(myFont);
+        
+        for (int i = 0; i<data.getRelationshipsForPersonID(currentPersonID).size(); i++)
+        {
+            g.setColor(lineColor);
+            g.drawLine(width/2-circleDiam/2,height/2-circleDiam/2, getCenterXForObject(i,data.getRelationshipsForPersonID(currentPersonID).size()), getCenterYForObject(i,data.getRelationshipsForPersonID(currentPersonID).size()));
+            g.setColor(objectColor);
+            g.fillOval(getCenterXForObject(i,data.getRelationshipsForPersonID(currentPersonID).size()), getCenterYForObject(i,data.getRelationshipsForPersonID(currentPersonID).size()), circleDiam, circleDiam);
+            
+        }
         // loop through each of the relationships - you'll need to draw:
         //   1) the line for the relationship
         //   2) a string with a relationshipType for the line
