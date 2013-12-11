@@ -85,9 +85,9 @@ public class Data
     
     
     
-    // --------
+    //---------------
     // Removing things from maps
-    // --------
+    //---------------
     /**
      * Removes the person from "people" and removes all relationships from "relationships" involving that person.
      * @param personToDie 
@@ -103,14 +103,29 @@ public class Data
                 relationships.remove(i);
         }
     }
+    /**
+     * Removes the given relationship (an ArrayList<Integer>) from the "relationships" HashMap.
+     * @param relationshipToDie 
+     */
+    public void removeRelationship(ArrayList<Integer> relationshipToDie)
+    {
+        for (int i: relationships.keySet())
+        {
+            if (relationships.get(i).equals(relationshipToDie))
+            {
+                relationships.remove(i);
+                return;
+            }
+        }
+    }
     
     
     
     
     
-    // ---------------
+    //---------------
     // Returning data from maps
-    // ---------------
+    //---------------
     /**
      * Returns an ArrayList of the names (from toString()) of all of the people in the People HashMap, in the order of entry.
      * @return 
@@ -124,7 +139,6 @@ public class Data
         }
         return peopleNames;
     }
-    
     /**
      * Returns an ArrayList of the NeutralVersions of all of the RelationshipTypes in the RelationshipTypes HashMap, in the order of entry.
      * @return 
