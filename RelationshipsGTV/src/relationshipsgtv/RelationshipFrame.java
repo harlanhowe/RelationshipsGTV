@@ -91,6 +91,16 @@ public final class RelationshipFrame extends javax.swing.JFrame {
             * }
             */
         
+        int selectedRow = personList.getSelectedIndex();
+        int current=myData.getPersonForName(myData.getPeopleNames().get(selectedRow)).getID();
+      ArrayList<String>temp=new ArrayList<String>();
+        for(int i=0; i<myData.getRelationshipsForPersonID(current).size();i++)
+       {
+           String name1=myData.getPersonForID(current).toString();
+           
+           //String name2=myData.getPersonForID(myData.getRelationshipsForPersonID(current).get(i).get(0)).toString();
+       }
+        //ArrayList<String>relationshipStrings=myData.getRelationshipsForPersonID(current);
         
         
         
