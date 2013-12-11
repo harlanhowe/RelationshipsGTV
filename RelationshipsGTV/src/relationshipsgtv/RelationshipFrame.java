@@ -697,9 +697,9 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         // do whatever you have to to remove the person in question.
         // TODO: you do this! (removePersonButton)
         
-        
-        
-        
+        String desiredName = (String)(personList.getSelectedValue());
+        Person personToDie = myData.getPersonForName(desiredName);
+        myData.removePerson(personToDie);
         
         
         // refresh the JLists on screen and clear their selections.
