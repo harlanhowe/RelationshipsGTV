@@ -93,29 +93,31 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         int selectedRow = personList.getSelectedIndex();
         if(selectedRow!=-1)
         {
-       
-        
-       
             int current=myData.getPersonForName(myData.getPeopleNames().get(selectedRow)).getID();
         ArrayList<String>temp=new ArrayList<String>();
       
         for(int i:myData.getRelationshipsForPersonID(current))
        {
-           String name1=myData.getPersonForID(current).toString();
-           String name2=myData.getPersonForID(myData.relationships.get(i).get(2)).toString();
-           String type= myData.relationshipTypes.get(myData.relationships.get(i).get(1)).getNeutral();
-           relationshipStrings.add(name1+" is "+type+" of "+name2);
-       }
+           Person name1= myData.getPersonForID(current);
+           Person name2=myData.getPersonForID(myData.relationships.get(i).get(2));
+           RelationshipType type= myData.relationshipTypes.get(myData.relationships.get(i).get(1));
+          relationshipStrings.add(name1.toString()+" is "+type.getNeutral()+" of "+name2.toString()); 
+           //if(name1.getMale())
+           //{
+          // relationshipStrings.add(name1.toString()+" is "+type.getPrimaryMale().toString()+" of "+name2.toString()); 
+          // }
+           //if(!name1.getMale())
+          // {
+          // relationshipStrings.add(name1.toString()+" is "+type.getPrimaryFemale()+" of "+name2.toString()); 
+           //}
         }
-       
-        
-        
-        
+
         // tell the onscreen JList about the array of strings and tell it to
         // update its appearance.
         relationshipList.setListData(relationshipStrings.toArray());
         relationshipList.validate();
         
+    }
     }
     /**
      * updates the appearance of the Personal map, most often at the start of
@@ -809,12 +811,7 @@ public final class RelationshipFrame extends javax.swing.JFrame {
         // TODO: You do this! (personSelectionChanged)
         
        //personList.getSelectedIndex();
-       
-        
-        
-        
-        
-        
+
         // update the relationship List and the personal map to reflect this change.
         updateRelationshipList();
         updatePersonalMap();
