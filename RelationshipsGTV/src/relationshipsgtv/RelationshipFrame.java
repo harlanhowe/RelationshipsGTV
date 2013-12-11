@@ -90,17 +90,24 @@ public final class RelationshipFrame extends javax.swing.JFrame {
             relationshipStrings.add(temp);
             * }
             */
-        
         int selectedRow = personList.getSelectedIndex();
-        int current=myData.getPersonForName(myData.getPeopleNames().get(selectedRow)).getID();
-      ArrayList<String>temp=new ArrayList<String>();
-        for(int i=0; i<myData.getRelationshipsForPersonID(current).size();i++)
+        if(selectedRow!=-1)
+        {
+       
+        
+       
+            int current=myData.getPersonForName(myData.getPeopleNames().get(selectedRow)).getID();
+        ArrayList<String>temp=new ArrayList<String>();
+      
+        for(int i:myData.getRelationshipsForPersonID(current))
        {
            String name1=myData.getPersonForID(current).toString();
-           
-           //String name2=myData.getPersonForID(myData.getRelationshipsForPersonID(current).get(i).get(0)).toString();
+           String name2=myData.getPersonForID(myData.relationships.get(i).get(2)).toString();
+           String type= myData.relationshipTypes.get(myData.relationships.get(i).get(1)).getNeutral();
+           relationshipStrings.add(name1+" is "+type+" of "+name2);
        }
-        //ArrayList<String>relationshipStrings=myData.getRelationshipsForPersonID(current);
+        }
+       
         
         
         
