@@ -151,9 +151,9 @@ public class PersonalMapPane extends JPanel
                 // TODO: you do this! (handleMouseClick selectedID) - set the selectedObjectID to the id of the
                 //          target of this iteration's relationship.
                 //selectedObjectId = ?????
-                
-                
-
+                ArrayList relatives = data.getRelativesForPersonID(currentPersonID);
+                Person relative = (Person)relatives.get(numRels);
+                selectedObjectId = relative.getID();
                 repaint();
                 return;
             }
@@ -187,6 +187,11 @@ public class PersonalMapPane extends JPanel
             g.setColor(objectColor);
             g.fillOval(getCenterXForObject(i,data.getRelationshipsForPersonID(currentPersonID).size()), getCenterYForObject(i,data.getRelationshipsForPersonID(currentPersonID).size()), circleDiam, circleDiam);
             
+            //Draw secondPerson Name on circle
+            ArrayList relativesToDraw = data.getRelativesForPersonID(currentPersonID);
+            Person relative = (Person)relativesToDraw.get(i);
+            String relativeName = relative.toString();
+            g.drawString(relativeName,getCenterXForObject(i,data.getRelationshipsForPersonID(currentPersonID).size()), getCenterYForObject(i,data.getRelationshipsForPersonID(currentPersonID).size()));
         }
         // loop through each of the relationships - you'll need to draw:
         //   1) the line for the relationship

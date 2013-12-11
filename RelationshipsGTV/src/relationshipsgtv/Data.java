@@ -171,6 +171,21 @@ public class Data
         }
         return returnArray;
     }
+    /**
+     * Returns an ArrayList of people that the person with the given id is related to.
+     * @param idToFind
+     * @return 
+     */
+    public ArrayList<Person> getRelativesForPersonID(int idToFind)
+    {
+        ArrayList<Person> returnArray = new ArrayList<Person>();
+        for (int i: relationships.keySet())
+        {
+            if (relationships.get(i).get(0) == idToFind)
+                returnArray.add(getPersonForID(relationships.get(i).get(2)));
+        }
+        return returnArray;
+    }
     public RelationshipType getRelationshipTypeForNeutral(String neutralToFind)
     {
         for (int i: relationshipTypes.keySet())
